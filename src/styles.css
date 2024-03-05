@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    padding-top: 50px;
+}
+.product{
+    border-radius: 5px;
+    border: solid 1px black;
+    transition: box-shadow 0.5s;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+}
+.product:hover{
+    box-shadow: 0 0 10px green;
+}
+.product .btn-style{
+    transform: translateY(150%);
+    transition: transform 1s;
+}
+.product:hover .btn-style{
+    transform: translateY(0);
+}
+.product:hover .heart{
+    right: 5px;
+    transition: all 1s;
+}
+.heart{
+    font-size: 30px;
+    position: absolute;
+    top: 5px;
+    right: -50px;
+    /* z-index: 99; */
+    cursor: pointer;
+
+}
+.color{
+    color: gold;
+}

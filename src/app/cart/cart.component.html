@@ -1,0 +1,32 @@
+<section class="w-75 mx-auto rounded shadow bg-light p-3 mb-3" *ngIf="cartDetails;else msg">
+   <div class="d-flex justify-content-between align-items-center">
+    <h1 class="h2">Shop Cart</h1>
+    <button (click)="clear()" class="btn btn-sm btn-outline-danger">clear All</button>
+   </div>
+
+    <p class="text-success">Total Price {{cartDetails.totalCartPrice | currency:" EGP "}}</p>
+
+    <div *ngFor="let item of cartDetails.products" class="row border-bottom py-2">
+        <div class="col-md-1">
+            <img class="w-100" [src]="item.product.imageCover" [alt]="item.product.title">
+        </div>
+        <div class="col-md-11 d-flex justify-content-between">
+            <div>
+                <h3 class="h6">{{item.product.title}}</h3>
+                <p class="text-success small mb-0">price {{item.price}}</p>
+                <button (click)="removeItem(item.product._id)" class="btn m-0 p-0">
+                    <i class="fas fa-trash-can"></i> Remove
+                </button>
+            </div>
+            <div>
+                <button (click)="changeCount(item.count - 1 ,item.product._id)" class="btn btn-sm border-success"> - </button>
+                <span> {{item.count}} </span>
+                <button (click)="changeCount(item.count + 1 ,item.product._id)" class="btn btn-sm border-success"> + </button>
+            </div>
+        </div>
+    </div>
+    <button [routerLink]="['/checkout' , cartDetails._id]" class="btn btn-success my-2 ">Online Payment</button>
+</section>
+<ng-template #msg> 
+    <h2 class="text-center text-danger">Not Found Item</h2>
+</ng-template>
